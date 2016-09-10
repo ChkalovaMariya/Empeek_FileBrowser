@@ -1,0 +1,216 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Set padding to display errors that occur during databinding */
+.padding-error {
+    padding-top: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    .nofloat {
+        float: none;
+        padding: 10px 15px;
+    }
+}
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+
+div.table-title {
+  display: block;
+  margin: auto;
+  max-width: 800px;
+  width: 100%;
+}
+
+.allfiles{
+  display: block;
+  max-width: 800px;
+  width: 100%;
+  margin:auto;
+  margin-top: 1.5em;
+  border: 1px solid;
+  border-color: #9ea7af;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.folders{
+    color:midnightblue;
+    cursor:pointer;
+}
+
+.files{
+    color:black;
+    text-decoration: underline;
+}
+
+.table-title h3 {
+   color:  midnightblue;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+   text-align:center;
+}
+
+.form {
+    font-size: 23px;
+    margin-top: 1.5em;
+    max-width: none;
+    width: 100%;
+}
+
+.labelStyle {
+   color:  midnightblue;
+   font-weight: 400;
+   font-style: normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   font-weight: bold;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   padding:10px;
+   margin: auto;
+   width: 180px;
+}
+
+.inputStyle {
+   color:black;
+   font-size: 23px;
+   font-weight: 400;
+   font-style: normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   padding-left:10px;
+   margin: auto;
+   border-left-style: none;
+   border-right-style: none;
+   border-top-style:none;
+   border-bottom-style:none;
+   width: 610px;
+}
+
+.listItem
+{
+   font-size: 23px;
+   font-weight: 400;
+   font-style: normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   padding-left:10px;
+   margin: auto;
+   border-left-style: none;
+   border-right-style: none;
+   border-top-style:none;
+   border-bottom-style:none;
+   list-style-type:none;
+}
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 130px;
+  max-width: 800px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin: auto
+}
+ 
+th {
+  color:#D5DDE5;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+  color:black;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+ 
+tr:first-child {
+  border-top:none;
+}
+
+
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:23px;
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+

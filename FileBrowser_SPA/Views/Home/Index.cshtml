@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html ng-app="AngularApp" ng-controller="LandingPageCtrl">
+<head>
+    <title>Browser</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    
+<div class="table-title">
+    <h3>Directory / File Browser</h3>
+</div>
+<table class="table-fill">
+    <thead>
+    <tr>
+        <th class="text-center">Less 10Mb</th>
+        <th class="text-center">10Mb - 50Mb</th>
+        <th class="text-center">More 100Mb</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="text-center">{{count1}}</td>
+        <td class="text-center">{{count2}}</td>
+        <td class="text-center">{{count3}}</td>
+    </tr>
+    </tbody>
+</table>
+<div class="table-title">
+    <form class="form">
+        <label class="labelStyle">Current path:</label>
+        <input id="path" type="text" ng-model="directory" class="inputStyle">
+    </form>
+</div>
+
+<div class="allfiles">    
+    <ul class="listItem">
+        <li class="folders" ng-hide="hideBack" ng-click="getParent()">...</li>
+        <li ng-class="{files:item.isFile,folders:!item.isFile}" ng-repeat="item in items |  orderBy: 'isFile==true?1:0'" ng-click="item.isFile || changePath(item.fullPath)">{{item.name}}</li>
+    </ul>
+</div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+        @Scripts.Render("~/bundles/AngularApp")
+</body>
+
+</html>
