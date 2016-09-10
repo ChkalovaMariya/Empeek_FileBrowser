@@ -12,15 +12,14 @@ namespace FileBrowser_SPA.Controllers
 {
     public class WebApiController : ApiController
     {
-        // GET api/<controller>
-        private DataManager dataManager;
+        private IDataManager dataManager;
 
         public WebApiController()
             : this(new DataManager())
         {
         }
 
-        public WebApiController(DataManager dataManager)
+        public WebApiController(IDataManager dataManager)
         {
             this.dataManager = dataManager;
         }
@@ -57,7 +56,7 @@ namespace FileBrowser_SPA.Controllers
             }
             finally
             {
-                response.Headers.Add("Access-Control-Allow-Origin", "*");
+                response.Headers.Add("Access-Control-Allow-Origin", "*"); //to allow cross domain requests
             }   
             return response;
         }

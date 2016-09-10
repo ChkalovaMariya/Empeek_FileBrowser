@@ -10,7 +10,7 @@ namespace FileBrowser_SPA.DAL
     public interface IDataManager
     {
         Task<IEnumerable<DirectoryItem>> Get(string directory);
-        Task<int> GetCount(string directory, int min, int max);
-        bool DirExists(string directory);
+        Task<int[]> GetCount(string directory);
+        void CheckTargetDirectory(string directory);
     }
 }

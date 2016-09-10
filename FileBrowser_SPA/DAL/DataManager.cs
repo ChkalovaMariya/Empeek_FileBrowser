@@ -8,7 +8,7 @@ using System.IO;
 
 namespace FileBrowser_SPA.DAL
 {
-    public class DataManager
+    public class DataManager:IDataManager
     {
         public DataManager()
         {
@@ -92,7 +92,7 @@ namespace FileBrowser_SPA.DAL
             int count3 = 0;
 
              double size;
-                double mb;
+             double mb;
 
                 IEnumerable<string> files = FileEnumerator.EnumerateFiles(directory, ".", SearchOption.AllDirectories);
 
@@ -124,7 +124,7 @@ namespace FileBrowser_SPA.DAL
         
 
 
-        private void CheckTargetDirectory(string dir)
+        public void CheckTargetDirectory(string dir)
         {
             if (!Directory.Exists(dir))
             {
