@@ -30,14 +30,14 @@
 <div class="table-title">
     <form class="form">
         <label class="labelStyle">Current path:</label>
-        <input id="path" type="text" ng-model="directory" class="inputStyle">
+        <input id="path" type="text" ng-model="directory" class="inputStyle" ng-readonly="hideBack">
     </form>
 </div>
 
 <div class="allfiles">    
     <ul class="listItem">
-        <li class="folders" ng-hide="hideBack" ng-click="getParent()">...</li>
-        <li ng-class="{files:item.isFile,folders:!item.isFile}" ng-repeat="item in items |  orderBy: 'isFile==true?1:0'" ng-click="item.isFile || changePath(item.fullPath)">{{item.name}}</li>
+        <li class="folders" ng-hide="hideBack||directory=='drives'" ng-click="getParent()">...</li>
+        <li ng-class="{alert: alert==true, files:item.isFile, folders:!item.isFile}" ng-repeat="item in items |  orderBy: 'isFile==true?1:0'" ng-click="(item.isFile||alert==true) || changePath(item.fullPath)">{{item.name}}</li>
     </ul>
 </div>
 

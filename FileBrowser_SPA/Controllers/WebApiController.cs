@@ -35,21 +35,30 @@ namespace FileBrowser_SPA.Controllers
             try
             {
                 var results = await dataManager.Get(dir);
-                if (!dir.Equals("drives"))
+                if (dir.Equals("drives"))
                 {
-                    var counts = await dataManager.GetCount(dir);
-                    response = Request.CreateResponse(HttpStatusCode.OK, new { entities = results, countMin = counts[0], countMiddle = counts[1], countMax = counts[2] });
+                    response = Request.CreateResponse(HttpStatusCode.OK,
+                        new {entities = results, countMin = "", countMiddle = "", countMax = ""});
                 }
                 else
                 {
-                    response = Request.CreateResponse(HttpStatusCode.OK, new { entities = results, countMin = "", countMiddle = "", countMax = "" });
+                    var counts = await dataManager.GetCount(dir);
+                    response = Request.CreateResponse(HttpStatusCode.OK,
+                        new {entities = results, countMin = counts[0], countMiddle = counts[1], countMax = counts[2]});
                 }
             }
             catch (ArgumentException e)
             {
-                response = Request.CreateResponse(HttpStatusCode.BadRequest, new { });
+                response = Request.CreateResponse(HttpStatusCode.NotFound, new { });
 
             }
+
+            catch (UnauthorizedAccessException e)
+            {
+                response = Request.CreateResponse(HttpStatusCode.MethodNotAllowed, new { });
+
+            }
+
             catch (Exception e)
             {
                 response = Request.CreateResponse(HttpStatusCode.InternalServerError, new { });

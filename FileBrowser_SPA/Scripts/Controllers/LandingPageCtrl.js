@@ -2,6 +2,7 @@
        
     $scope.directory = $window.localStorage['currentPath'] != null ? $window.localStorage['currentPath'] : "drives";
     $scope.hideBack = false;
+    $scope.alert = false;
 
     //Compose URL to make GET requests to server 
     $scope.getUri=function()
@@ -22,19 +23,24 @@
     //if the current path was changed (either click on folder or enter directory on the input field), method triggers method that retrieves data from server
     $scope.$watch('directory', function (newVal) {
         $scope.getItems();
-        if ($scope.directory != 'drives') {
-            $scope.hideBack = false;
-        }
-        else {
-            $scope.hideBack = true;
-        }
+        //if ($scope.directory != 'drives') {
+        //    $scope.hideBack = false;
+        //}
+        //else {
+        //    $scope.hideBack = true;
+        //}
         $window.localStorage['currentPath'] = $scope.directory;
 
     });
 
     //method sends GET request to server, that is handled by WebApiController (Get method)
     $scope.getItems = function () {
-        $scope.items = [{ name: 'Please wait - loading content, calculating totals...' }];
+        $scope.items = [
+        {
+            name: 'Please wait - loading content, calculating totals...'
+        }];
+        $scope.hideBack = true;
+        $scope.alert = true;
         $scope.count1 = null;
         $scope.count2 = null;
         $scope.count3 = null;
@@ -49,18 +55,25 @@
             $scope.count1 = data.countMin;
             $scope.count2 = data.countMiddle;
             $scope.count3 = data.countMax;
+            $scope.alert = false;
+            $scope.hideBack = false;
+
 
         }).error(function (data,status) {
-            
+            $scope.alert = true;
+            $scope.hideBack = false;
             $scope.count1 = null;
             $scope.count2 = null;
             $scope.count3 = null;
             var message;
-            if (status == 400) {
+            if (status == 404) {
                 message = 'The destination path could not be found. Target directory was renamed or deleted.';
             }
+            else if (status == 405) {
+                message = 'Path is not accessible. Access is denied.';
+            }
             else {
-                message = 'Internal server error. Try again later.';
+                message = 'Internal server error.';
 
             }
             $scope.items = [{ name: message }];

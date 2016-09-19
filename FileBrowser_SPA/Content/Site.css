@@ -67,6 +67,11 @@ div.table-title {
     text-decoration: underline;
 }
 
+.alert{
+    color:darkred;
+    cursor:default;
+}
+
 .table-title h3 {
    color:  midnightblue;
    font-size: 30px;

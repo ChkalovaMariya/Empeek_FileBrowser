@@ -77,6 +77,12 @@ namespace FileBrowser_SPA.DAL
                 throw new ArgumentException(e.Message);
             }
 
+            catch (UnauthorizedAccessException e)
+            {
+
+                throw new UnauthorizedAccessException(e.Message);
+            }
+
             catch (Exception e)
             {
                 throw new Exception(e.Message);
